@@ -146,9 +146,8 @@ Identify the top 3 most consistently differentially expressed genes between the 
 cleaned_data %>%
   mutate(time.point = str_replace(time.point, 'hpi', ''),
          time.point = str_c('hpi.', time.point)) %>%
-  spread(time.point, value) -> expr_data
-
-expr_data <- expr_data[,c(1:4,8,5:7)]
+  spread(time.point, value) %>%
+  select(gene.name:rep,hpi.6,hpi.12:hpi.24) -> expr_data
 
 ```
 
